@@ -23,6 +23,27 @@ if "%input%" == "4" goto editor_build
 if "%input%" == "0" goto end
 goto editor_main
 
+:editor_build
+cls
+echo BUILDING PROJECT
+echo Please wait...
+echo.
+
+cd ..
+cd ..
+cd bin
+mkdir out
+cd out
+mkdir "%~1_data"
+cd ..
+cd ..
+
+copy "saves/%~1/%~1.bat" "bin/out/%~1.bat"
+copy "saves/%~1/config.bat" "bin/out/config.bat"
+copy "core/engine.bat" "bin/out/core.bat"
+copy "saves/%~1/Assets" "bin/out/%~1_data/Assets"
+goto editor_build_done
+
 :editor_settings
 cls
 echo PROJECT SETTINGS
