@@ -23,12 +23,26 @@ if "%input%" == "4" goto editor_build
 if "%input%" == "0" goto end
 goto editor_main
 
+:editor_settings
+cls
+echo PROJECT SETTINGS
+echo.
+echo.
+echo -) No Settings
+echo.
+echo 0) Exit
+echo.
+set /p input=^> 
+
+if "%input%" == "0" goto editor_main
+goto editor_settingsa
+
 :editor_error
 echo %~1
 echo.
 echo PRESS ANY KEY TO EXIT
 pause > nul
-goto EOF
+goto eof
 
 :end
 cd ..
