@@ -63,7 +63,8 @@ cd saves
 for /d %%D in (*) do echo ) %%~nxD
 echo.
 cd ..
-set /p input=^>
+set /p input=^> 
+call core/editor.bat "%input%"
 goto launcher_menu
 goto eof
 
