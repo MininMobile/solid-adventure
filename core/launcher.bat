@@ -47,11 +47,24 @@ echo call core.bat>>%project%.bat
 cd ..
 cd ..
 
+echo Project created, press any key to continue...
+pause > nul
 goto launcher_menu
 goto eof
 
 :launcher_load
-
+cls
+echo LOAD PROJECT
+echo.
+echo.
+echo type the name of a following project to open
+echo.
+cd saves
+for /d %%D in (*) do echo ) %%~nxD
+echo.
+cd ..
+set /p input=^>
+goto launcher_menu
 goto eof
 
 :eof
