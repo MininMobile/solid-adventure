@@ -36,12 +36,17 @@ goto eof
 :launcher_new_create
 if "%project%" == "" goto launcher_menu
 
-mkdir saves
+mkdir saves > nul
 cd saves
 mkdir %project%
 cd %project%
 
+mkdir Assets
+
+echo @echo off>config.bat
+
 echo @echo off>%project%.bat
+echo call config.bat>>%project%.bat
 echo call core.bat>>%project%.bat
 
 cd ..
@@ -62,8 +67,11 @@ echo.
 cd saves
 for /d %%D in (*) do echo ) %%~nxD
 echo.
+echo 0) Exit
+echo.
 cd ..
 set /p input=^> 
+if "%input%" == "0" goto launcher_menu
 call core/editor.bat "%input%"
 goto launcher_menu
 goto eof
