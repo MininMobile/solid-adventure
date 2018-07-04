@@ -33,16 +33,32 @@ cd ..
 cd ..
 cd bin
 mkdir out
+del out /q
 cd out
 mkdir "%~1_data"
+cd "%~1_data"
+mkdir Assets
+cd ..
 cd ..
 cd ..
 
-copy "saves/%~1/%~1.bat" "bin/out/%~1.bat"
-copy "saves/%~1/config.bat" "bin/out/config.bat"
-copy "core/engine.bat" "bin/out/core.bat"
-copy "saves/%~1/Assets" "bin/out/%~1_data/Assets"
+copy "saves\%~1\%~1.bat" "bin\out\%~1.bat"
+copy "saves\%~1\config.bat" "bin\out\config.bat"
+copy "core\engine.bat" "bin\out\core.bat"
+copy "saves\%~1\Assets" "bin\out\%~1_data\Assets"
+
+cd bin
+cd out
+rename engine.bat core.bat
+cd ..
+cd ..
+cd saves
+cd %~1
 goto editor_build_done
+
+:editor_build_done
+pause
+goto editor_main
 
 :editor_settings
 cls
